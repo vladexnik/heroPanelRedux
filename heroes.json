@@ -1,0 +1,55 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Первый герой",
+      "description": "Первый герой в рейтинге!",
+      "element": "fire"
+    },
+    {
+      "id": 3,
+      "name": "Неизвестный герой",
+      "description": "Скрывающийся в тени",
+      "element": "wind"
+    },
+    {
+      "id": "e17bf3d1-19a0-4958-acdc-8617fc0ee9ac",
+      "name": "SPIDER",
+      "description": "fly and run",
+      "element": "fire"
+    },
+    {
+      "id": "2c22049a-1e5e-49cf-a095-d49b22eede7b",
+      "name": "pikachu",
+      "description": "lightnings",
+      "element": "wind"
+    }
+  ],
+  "filters": [
+    {
+      "name": "all",
+      "label": "Всё",
+      "className": "btn-outline-dark"
+    },
+    {
+      "name": "fire",
+      "label": "Огонь",
+      "className": "btn-danger"
+    },
+    {
+      "name": "water",
+      "label": "Вода",
+      "className": "btn-primary"
+    },
+    {
+      "name": "earth",
+      "label": "Земля",
+      "className": "btn-secondary"
+    },
+    {
+      "name": "wind",
+      "label": "Ветер",
+      "className": "btn-dark"
+    }
+  ]
+}
