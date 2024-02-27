@@ -2,10 +2,10 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 // import reducer from '../reducers';
 import reducerFilters from '../reducers/filters';
 import reducerHeroes from '../reducers/heroes';
+import { thunk } from 'redux-thunk'
+
 
 // const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
-
 
 const stringMiddleware=(store)=>(next)=>(action)=>{
     
@@ -16,8 +16,6 @@ const stringMiddleware=(store)=>(next)=>(action)=>{
     }
     return next(action)
 }
-
-
 
 // so that we can dispatch('HEROES_FETCHING') from action, wtf?
 const enhancer=(createStore)=>(...args)=>{
@@ -38,10 +36,10 @@ const enhancer=(createStore)=>(...args)=>{
 const store = createStore( 
     combineReducers({reducerHeroes,reducerFilters}),
     compose(
-        applyMiddleware(stringMiddleware),
+        applyMiddleware(thunk, stringMiddleware),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
-    
+
     // compose(
     //     enhancer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     // )

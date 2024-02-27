@@ -1,3 +1,18 @@
+export const fetchHeroes=(request)=> (dispatch)=>{
+    dispatch(heroesFetching()); 
+    request("http://localhost:3001/heroes")
+        .then(data => dispatch(heroesFetched(data)))
+        .catch(() => dispatch(heroesFetchingError()))
+} // thunk
+
+export const fetchFilters=(request)=>(dispatch)=>{
+    dispatch(filtersFetching());
+        request("http://localhost:3001/filters")
+            // .then(res=>console.log(res))
+            .then(data=> dispatch(filtersFetched(data)))
+            .catch(()=> dispatch(filtersFetchingError()))
+}
+
 export const heroesFetching = () => {
     return {
         type: 'HEROES_FETCHING'
@@ -52,10 +67,20 @@ export const filtersFetched = (filters) => {
     }
 }
 
-export const activeFilterChanged = (id) => {
+export const activeFilterChanged = (filter) => {
     // console.log(id);
     return {
         type: 'ACTIVE_FILTER_CHANGED',
-        payload: id
+        payload: filter
     }
 }
+
+// export const activeFilterChanged = (id) => (dispatch) => {
+//     // console.log(id);
+//     setTimeout(() => {
+//         dispatch({
+//             type: 'ACTIVE_FILTER_CHANGED',
+//             payload: id
+//         })
+//     }, 600);
+// }

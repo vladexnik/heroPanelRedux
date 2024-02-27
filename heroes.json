@@ -25,28 +25,16 @@
       "element": ""
     },
     {
-      "id": "03082336-8b2c-4d51-b0ca-30a3cc6e7536",
-      "name": "wewe",
-      "description": "wewewe",
-      "element": "fire"
-    },
-    {
-      "id": "3ef5cb2f-72c7-4df3-88ae-39657ab59e93",
-      "name": "wewewe",
-      "description": "ewe",
-      "element": ""
-    },
-    {
       "id": "8f4b7488-295e-4f5d-b15f-0f138ffd3c69",
       "name": "sdsd",
       "description": "sdsd",
       "element": "water"
     },
     {
-      "id": "be9eec3c-cf0a-41ca-97af-bc4ddd2e9d69",
-      "name": "sdsdsd",
-      "description": "dsd",
-      "element": "water"
+      "id": "2ec43902-bdfa-4304-8150-dda1dc22de34",
+      "name": "sdsd",
+      "description": "dsdd",
+      "element": "wind"
     }
   ],
   "filters": [
