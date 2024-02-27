@@ -53,7 +53,7 @@ export const filtersFetched = (filters) => {
 }
 
 export const activeFilterChanged = (id) => {
-    console.log(id);
+    // console.log(id);
     return {
         type: 'ACTIVE_FILTER_CHANGED',
         payload: id
