@@ -13,7 +13,7 @@ import { createSelector } from '@reduxjs/toolkit';
 // Удаление идет и с json файла при помощи метода DELETE
 
 const HeroesList = () => {
-    const {heroes, heroesLoadingStatus} = useSelector(state => state);
+    const {heroes, heroesLoadingStatus} = useSelector(state => state.reducerHeroes);
     
     // const filteredHeroes=useSelector(state=>{
     //     if(state.reducerFilters.activeFilter === 'all'){
@@ -42,7 +42,7 @@ const HeroesList = () => {
     const {request} = useHttp();
 
     useEffect(() => {
-        dispatch(heroesFetching());
+        dispatch('HEROES_FETCHING');
         request("http://localhost:3001/heroes")
             .then(data => dispatch(heroesFetched(data)))
             .catch(() => dispatch(heroesFetchingError()))
