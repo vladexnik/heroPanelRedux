@@ -1,3 +1,5 @@
+
+// не нужен, есть слайс
 import { createReducer } from "@reduxjs/toolkit"
 import {
     heroesFetched,
@@ -6,8 +8,6 @@ import {
     heroAdd,
     heroDelete
 } from '../actions';
-
-
 
 const initialState = {
     heroes: [],
