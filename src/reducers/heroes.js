@@ -1,9 +1,61 @@
+import { createReducer } from "@reduxjs/toolkit"
+import {
+    heroesFetched,
+    heroesFetching,
+    heroesFetchingError,
+    heroAdd,
+    heroDelete
+} from '../actions';
+
+
+
 const initialState = {
     heroes: [],
     heroesLoadingStatus: 'idle',
-}
+} 
 
-const reducerHeroes = (state = initialState, action) => {
+const reducerHeroes=createReducer(initialState, {
+    [heroesFetching]: state=> {state.heroesLoadingStatus='loading'},
+    [heroesFetched]: (state, action)=>{
+        state.heroesLoadingStatus='idle';
+        state.heroes=action.payload
+    },
+    [heroesFetchingError]: (state)=>{
+        state.heroesLoadingStatus='error'
+    },
+    [heroAdd]: (state, action)=>{
+        state.heroes.push(action.payload)
+    },
+    [heroDelete]: (state, action)=>{
+        state.heroes=state.heroes.filter(item => item.id !== action.payload);
+        }
+    },
+    [],
+    state=>state
+)
+
+// const reducerHeroes=createReducer(initialState, builder=>{
+//     builder
+//         .addCase(heroesFetching, state=>{
+//             state.heroesLoadingStatus='loading'
+//         })
+//         .addCase(heroesFetched, (state, action)=>{
+//             state.heroesLoadingStatus='idle';
+//             state.heroes=action.payload
+//         })
+//         .addCase(heroesFetchingError, (state)=>{
+//             state.heroesLoadingStatus='error'
+//         })
+//         .addCase(heroAdd, (state, action)=>{
+//             state.heroes.push(action.payload)
+//         })
+//         .addCase(heroDelete, (state, action)=>{
+//             state.heroes=state.heroes.filter(item => item.id !== action.payload);
+//         })
+//         .addDefaultCase(()=>{})
+// })
+
+const reducerHeroes2 = (state = initialState, action) => {
     switch (action.type) {
         case 'HEROES_FETCHING':
             return {
