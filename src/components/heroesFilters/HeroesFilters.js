@@ -2,18 +2,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../spinner/Spinner";
-import { filtersChanged,fetchFilters } from "../heroesFilters/filtersSlice";
+import { filtersChanged,fetchFilters,selectAll } from "../heroesFilters/filtersSlice";
 import classNames from "classnames";
+import { store } from "../../store";
 
 
 const HeroesFilters = () => {
 
     const dispatch=useDispatch();
-    const {filters, filtersLoadingStatus, activeFilter} = useSelector(state => state.filters);
-
+    const { filtersLoadingStatus, activeFilter} = useSelector(state => state.filters);
+    const filters=selectAll(store.getState());  // arr of filters. Its important to have id for all of them
+    console.log(filters);
+    
     useEffect(()=>{
         dispatch(fetchFilters())
-
     },[])
 
     if(filtersLoadingStatus==='loading'){
@@ -21,7 +23,6 @@ const HeroesFilters = () => {
     } else if(filtersLoadingStatus==='error'){
         return <h5 className="text-center mt-5">Ошибка загрузки</h5>
     }
-
 
     const renderFilters=(filters)=>{
         if (filters.length===0){
@@ -39,10 +40,7 @@ const HeroesFilters = () => {
                         className={btnClass}
                         onClick={() => dispatch(filtersChanged(name))}
                         >{label}</button>
-
         })
-
-        
     }
 
     return (

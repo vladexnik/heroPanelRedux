@@ -17,7 +17,7 @@ const stringMiddleware=(store)=>(next)=>(action)=>{
     return next(action)
 }
 
-const store=configureStore({
+export const store=configureStore({
     reducer: { heroes, filters},
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware),
     devTools: process.env.NODE_ENV !== 'production',
